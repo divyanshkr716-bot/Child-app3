@@ -21,6 +21,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,8 +38,6 @@ import com.example.ui.theme.AirDroidCyan
 import com.example.ui.theme.AirDroidGreen
 import com.example.ui.theme.DarkBackground
 import com.example.ui.theme.DarkSurface
-import com.example.ui.theme.TextPrimary
-import com.example.ui.theme.TextSecondary
 
 @Composable
 fun RemoteCameraScreen(
@@ -53,10 +52,10 @@ fun RemoteCameraScreen(
             Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 Icon(Icons.Default.CameraAlt, null, tint = AirDroidCyan, modifier = Modifier.size(22.dp))
                 Column(Modifier.weight(1f)) {
-                    Text("Remote Camera", color = TextPrimary, fontWeight = FontWeight.Bold)
-                    Text(device?.name ?: "No child device selected", color = TextSecondary, fontSize = 11.sp)
+                    Text("Remote Camera", color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
+                    Text(device?.name ?: "No child device selected", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp)
                 }
-                Text("${latencyMs}ms • ${fps} FPS", color = TextSecondary, fontSize = 11.sp)
+                Text("${latencyMs}ms • ${fps} FPS", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp)
             }
         }
 
@@ -68,19 +67,19 @@ fun RemoteCameraScreen(
                     Spacer(Modifier.height(8.dp))
                     Text("Camera unavailable", color = Color.White, fontWeight = FontWeight.Bold)
                     Spacer(Modifier.height(4.dp))
-                    Text(cameraState.permissionError, color = TextSecondary, textAlign = TextAlign.Center, fontSize = 12.sp)
+                    Text(cameraState.permissionError, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center, fontSize = 12.sp)
                 }
                 else -> Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     CircularProgressIndicator(color = AirDroidGreen)
                     Spacer(Modifier.height(10.dp))
-                    Text("Waiting for the Child device camera permission and stream…", color = TextSecondary, fontSize = 12.sp, textAlign = TextAlign.Center)
+                    Text("Waiting for the Child device camera permission and stream…", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, textAlign = TextAlign.Center)
                 }
             }
         }
 
         Text(
             "The Child device must have Android camera permission. The stream is stopped automatically when this screen is left.",
-            color = TextSecondary,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 11.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()

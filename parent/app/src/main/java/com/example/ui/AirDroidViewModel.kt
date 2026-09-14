@@ -220,6 +220,10 @@ class AirDroidViewModel(application: Application) : AndroidViewModel(application
   // Local parent session; cloud authentication can be added when a real identity backend is configured.
   val userSession: StateFlow<UserSession> = MutableStateFlow(UserSession())
 
+  // Pairing state must be declared before the server callback uses it.
+  private val _pairingCode = MutableStateFlow("")
+  val pairingCode: StateFlow<String> = _pairingCode.asStateFlow()
+
   private val parentPairingServer = ParentPairingServer(application, { reg ->
     viewModelScope.launch {
       val device = ChildDevice(reg.id, reg.name, reg.model.ifBlank { "Android" }, reg.os.ifBlank { "Android" }, 0, false, 0.0, 0.0, true, "", 0, "", ConnectionMode.REMOTE_CLOUD, "Online now", reg.parentToken)
@@ -234,11 +238,11 @@ class AirDroidViewModel(application: Application) : AndroidViewModel(application
     _pairingCode.value = code
   })
 
-  private val _pairingCode = MutableStateFlow(parentPairingServer.pairingCode())
-  val pairingCode: StateFlow<String> = _pairingCode.asStateFlow()
   val pairingServerIp: String get() = "Cloud relay"
+
   init {
     parentPairingServer.start()
+    _pairingCode.value = parentPairingServer.pairingCode()
   }
 
   override fun onCleared() {
