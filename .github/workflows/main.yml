@@ -1,4 +1,4 @@
-name: Build Game Centre APKs
+mname: Build Game Centre APKs
 
 on:
   push:
@@ -26,12 +26,9 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-
-      - name: Install Android SDK packages
-        shell: bash
-        run: |
-          yes | sdkmanager --licenses >/dev/null 2>&1 || true
-          sdkmanager 'platform-tools' 'platforms;android-36' 'build-tools;36.0.0'
+        with:
+          accept-android-sdk-licenses: true
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
 
       - name: Create debug keystores
         shell: bash
