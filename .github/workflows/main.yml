@@ -1,0 +1,71 @@
+name: Build Game Centre APKs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.3.1'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        shell: bash
+        run: |
+          yes | sdkmanager --licenses >/dev/null 2>&1 || true
+          sdkmanager 'platform-tools' 'platforms;android-36' 'build-tools;36.0.0'
+
+      - name: Create debug keystores
+        shell: bash
+        run: |
+          for project in child parent; do
+            keytool -genkeypair -v \
+              -keystore "$project/debug.keystore" \
+              -storepass android \
+              -alias androiddebugkey \
+              -keypass android \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -dname 'CN=Android Debug,O=Android,C=US'
+          done
+
+      - name: Build Child APK
+        working-directory: child
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: Build Parent APK
+        working-directory: parent
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: Upload Child APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: child-apk
+          path: child/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+
+      - name: Upload Parent APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: parent-apk
+          path: parent/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

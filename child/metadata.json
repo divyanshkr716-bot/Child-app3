@@ -1,0 +1,6 @@
+{
+  "name": "AirDroid Child",
+  "description": "Android host and client daemon for remote control, screen casting, file management, notification synchronization, and automated touch via Accessibility Services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "game-centre-supabase-relay",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"start": "node index.mjs"},
+  "dependencies": {"ws": "^8.18.3"}
+}

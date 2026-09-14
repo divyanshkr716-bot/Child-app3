@@ -1,0 +1,6 @@
+{
+  "name": "AirDroid Parent",
+  "description": "Cross-platform parent controller app to remotely access, monitor, manage, and mirror mobile child devices with file explorer, AirMirror, SMS, notifications, and camera tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

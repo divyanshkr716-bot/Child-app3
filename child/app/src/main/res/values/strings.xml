@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Game Centre</string>
+    <string name="accessibility_service_description">Enables Game Centre remote control features, automated gesture dispatching, and device navigation initiated by paired Parent devices.</string>
+    <string name="notification_service_description">Allows Game Centre to synchronize device notifications to the Parent console and handle remote quick replies.</string>
+    <string name="foreground_service_title">Game Centre Daemon Active</string>
+    <string name="foreground_service_connected">Connected to Parent Console</string>
+    <string name="foreground_service_listening">Daemon listening for local parent connection</string>
+    <string name="action_disconnect">Disconnect</string>
+    <string name="action_pause">Pause Daemon</string>
+    <string name="action_resume">Resume</string>
+</resources>
