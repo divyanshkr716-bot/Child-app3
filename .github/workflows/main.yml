@@ -1,8 +1,9 @@
-mname: Build Game Centre APKs
+name: Build Game Centre APKs
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
