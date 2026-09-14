@@ -231,7 +231,6 @@ class AirDroidViewModel(application: Application) : AndroidViewModel(application
       _selectedDeviceId.value = saved.id
       connectionEngine.startMonitoringDevice(saved)
       _pairingStatusMessage.value = "Child connected: ${reg.name}"
-      _pairingCode.value = parentPairingServer.pairingCode()
       _activeTab.value = ActiveTab.DASHBOARD
     }
   }, { code ->
