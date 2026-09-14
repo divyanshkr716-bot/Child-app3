@@ -204,7 +204,7 @@ class AirDroidDaemonService : Service() {
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Game Centre Daemon")
             .setContentText(statusText)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.game_centre_icon)
             .setContentIntent(pendingOpenIntent)
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_LOW)

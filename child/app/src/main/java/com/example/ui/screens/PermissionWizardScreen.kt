@@ -130,7 +130,7 @@ fun PermissionWizardScreen(
             title = "2. Usage Access",
             description = "Settings -> Special app access -> Usage access -> Game Centre",
             whyNeeded = "Provides real app usage time so daily limits are based on Android UsageStats rather than simulated values.",
-            icon = Icons.Default.QueryStats,
+            icon = Icons.Default.Layers,
             isGranted = status.usageStats,
             actionLabel = if (status.usageStats) "Allowed" else "Grant Usage Access"
         ),
