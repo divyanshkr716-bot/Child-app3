@@ -811,10 +811,10 @@ class EmbeddedDaemonServer(
         val array = JSONArray()
         for (f in files) {
             array.put(JSONObject().apply {
-                put("id", f.id)
+                put("id", f.path)
                 put("name", f.name)
                 put("path", f.path)
-                put("fileType", f.fileType.name)
+                put("fileType", if (f.isDirectory) "DIRECTORY" else "FILE")
                 put("isDirectory", f.isDirectory)
                 put("sizeBytes", f.sizeBytes)
                 put("lastModified", f.lastModified)

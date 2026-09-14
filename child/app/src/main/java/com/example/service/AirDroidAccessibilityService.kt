@@ -5,8 +5,10 @@ import android.accessibilityservice.GestureDescription
 import android.content.Intent
 import android.graphics.Path
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityNodeInfo
 import com.example.AirDroidChildApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
