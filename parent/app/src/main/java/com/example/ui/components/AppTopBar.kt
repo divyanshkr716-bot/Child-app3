@@ -67,14 +67,14 @@ fun AppTopBar(
             imageVector = Icons.Filled.NearMe,
             contentDescription = "AirDroid Logo",
             tint = Color.White,
-            modifier = Modifier.size(22.dp)
+            modifier = Modifier.size(18.dp)
           )
         }
         Column {
           Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
               text = "AirDroid",
-              fontSize = 17.sp,
+              fontSize = 15.sp,
               fontWeight = FontWeight.Bold,
               color = MaterialTheme.colorScheme.onSurface
             )
@@ -85,7 +85,7 @@ fun AppTopBar(
             ) {
               Text(
                 text = "PARENT",
-                fontSize = 10.sp,
+                fontSize = 9.sp,
                 fontWeight = FontWeight.Black,
                 color = AirDroidGreen,
                 modifier = Modifier.padding(horizontal = 5.dp, vertical = 1.dp)
@@ -94,12 +94,12 @@ fun AppTopBar(
           }
           Text(
             text = "Desktop Client & AirMirror Hub",
-            fontSize = 11.sp,
+            fontSize = 9.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant
           )
         }
 
-        Spacer(modifier = Modifier.width(12.dp))
+        Spacer(modifier = Modifier.width(8.dp))
 
         // Active Device Selector Dropdown
         selectedDevice?.let { dev ->
