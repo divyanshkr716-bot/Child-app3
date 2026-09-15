@@ -240,8 +240,8 @@ class AirDroidViewModel(application: Application) : AndroidViewModel(application
   val pairingServerIp: String get() = "Cloud relay"
 
   init {
-    parentPairingServer.start()
     _pairingCode.value = parentPairingServer.pairingCode()
+    parentPairingServer.start()
   }
 
   override fun onCleared() {
@@ -680,7 +680,7 @@ class AirDroidViewModel(application: Application) : AndroidViewModel(application
   // --- Auth & Pairing ---
 
   fun refreshPairingCode() {
-    _pairingCode.value = parentPairingServer.regenerateCode()
+    parentPairingServer.regenerateCode()
   }
 
 
