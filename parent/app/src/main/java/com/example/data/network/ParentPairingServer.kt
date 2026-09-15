@@ -34,9 +34,10 @@ class ParentPairingServer(
 
     fun pairingCode(): String = prefs.getString("code", "--------") ?: "--------"
 
-    fun regenerateCode(): String {
-        requestSessionCode()
-        return pairingCode()
+    fun regenerateCode() {
+        Thread {
+            requestSessionCode()
+        }.also { it.start() }
     }
 
     fun localIp(): String = "Cloud relay"
